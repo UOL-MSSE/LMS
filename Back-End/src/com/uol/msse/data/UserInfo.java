@@ -5,6 +5,8 @@ public class UserInfo  {
     private String firstName;
     private String lastName;
     private Address address;
+    private String phoneNumber;
+
 
     public String getFirstName() {
         return firstName;
@@ -28,5 +30,13 @@ public class UserInfo  {
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 }

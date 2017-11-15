@@ -5,9 +5,17 @@ import com.uol.msse.entity.AccountStatus;
 import java.util.Date;
 
 public class Account {
+
     private int accountNumber;
     private Date dateOpened;
     private AccountStatus accountStatus;
+
+    public Account(int accountNumber, Date dateOpened, AccountStatus accountStatus) {
+        this.accountNumber = accountNumber;
+        this.dateOpened = dateOpened;
+        this.accountStatus = accountStatus;
+    }
+
 
     public int getAccountNumber() {
         return accountNumber;
