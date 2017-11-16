@@ -6,6 +6,7 @@ import com.uol.msse.entity.Format;
 
 import java.util.List;
 
+// Interface for search operations
 public interface Search {
 
     List<BookItem> getAllByTitle(String title);

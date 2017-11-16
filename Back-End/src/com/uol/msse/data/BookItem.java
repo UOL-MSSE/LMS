@@ -5,6 +5,9 @@ import com.uol.msse.entity.Language;
 
 import java.util.Date;
 
+/**
+ * Data object to store information related to the item that user checkedout
+ */
 public class BookItem extends Book{
 
     private String barCode;

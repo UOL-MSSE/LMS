@@ -1,22 +1,32 @@
 package com.uol.msse.page;
 
 
+import com.uol.msse.core.Manage;
+import com.uol.msse.core.impl.Librarian;
 import com.uol.msse.data.UserInfo;
+import com.uol.msse.exception.ManageUserException;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.List;
 
-public class MainPage  {
+public class MainPage {
 
     private JFrame frame;
 
+    private Librarian librarian;
+
     public MainPage() {
+        librarian = new Librarian();
         init();
     }
 
     private void init() {
+        List<Map<String, UserInfo>> userInfos = new ArrayList<>();
+
         frame = new JFrame();
         frame.setTitle("Library Management System");
         //setSize(500, 200);
@@ -30,21 +40,23 @@ public class MainPage  {
         JMenu userMgmtMenu = new JMenu("User Management");
         JMenuItem addUser = new JMenuItem("Add User", new ImageIcon());
         userMgmtMenu.add(addUser);
-        JMenuItem updateUser = new JMenuItem("Update User", new ImageIcon());
-        userMgmtMenu.add(updateUser);
+
         JMenuItem viewUser = new JMenuItem("View User", new ImageIcon());
         userMgmtMenu.add(viewUser);
+
+        JMenuItem updateUser = new JMenuItem("Update User", new ImageIcon());
+        userMgmtMenu.add(updateUser);
+
         menubar.add(userMgmtMenu);
 
-        JMenu libraryMgmtMenu = new JMenu("Library Management");
+        /*JMenu libraryMgmtMenu = new JMenu("Library Management");
         JMenuItem addBook = new JMenuItem("Add Book", new ImageIcon());
         libraryMgmtMenu.add(addBook);
         JMenuItem updateBook = new JMenuItem("Update Book", new ImageIcon());
         libraryMgmtMenu.add(updateBook);
         JMenuItem viewBook = new JMenuItem("View Book", new ImageIcon());
         libraryMgmtMenu.add(viewBook);
-        menubar.add(libraryMgmtMenu);
-        menubar.add(libraryMgmtMenu);
+        menubar.add(libraryMgmtMenu);*/
 
         JMenuItem exit = new JMenu("Exit").add(new JMenuItem("Exit"));
         menubar.add(Box.createHorizontalGlue());
@@ -53,45 +65,24 @@ public class MainPage  {
         exit.addActionListener((ActionEvent event) -> {
             System.exit(0);
         });
-        java.util.List<UserInfo> userInfos = new ArrayList<>();
 
-        addUser.addActionListener((ActionEvent event) -> {
-             new AddUserPage(userInfos);
-        });
-
-        viewUser.addActionListener((ActionEvent event) -> {
-            new ViewUserPage(userInfos);
-        });
+        try {
+            librarian.addUser(addUser, userInfos);
+            librarian.viewUser(viewUser, userInfos);
+            librarian.updateUser(updateUser, userInfos);
+        } catch (ManageUserException mue) {
+            System.out.println(mue.getMessage());
+        }
 
         frame.setJMenuBar(menubar);
 
-
-        /*JButton addUserButton = new JButton("Add User");
-        addUserButton.addActionListener(new AddUserPage(model));
-
-        JButton updateUserButton = new JButton("Update User");
-        addUserButton.addActionListener(new UpdateUserPage(model));
-
-        JButton viewUserButton = new JButton("View User");
-        addUserButton.addActionListener(new ViewUserPage(model));
-
-        JButton closeButton = new JButton("Close");
-        closeButton.addActionListener((ActionEvent event) -> {
-            System.exit(0);
-        });
-
-        createLayout(addUserButton, updateUserButton, viewUserButton, closeButton);*/
     }
-
-
-
 
 
     public static void main(String a[]) {
         EventQueue.invokeLater(() -> {
-            MainPage mainPage = new MainPage();
+            new MainPage();
         });
-
     }
 
 }

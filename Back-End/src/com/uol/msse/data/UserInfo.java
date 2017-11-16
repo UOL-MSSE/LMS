@@ -1,7 +1,11 @@
 package com.uol.msse.data;
 
 
+/**
+ * Data object that holds user information
+ */
 public class UserInfo  {
+    private String userId;
     private String firstName;
     private String lastName;
     private Address address;
@@ -38,5 +42,13 @@ public class UserInfo  {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

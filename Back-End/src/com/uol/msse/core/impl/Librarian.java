@@ -2,78 +2,42 @@ package com.uol.msse.core.impl;
 
 
 import com.uol.msse.core.Manage;
-import com.uol.msse.core.Search;
-import com.uol.msse.data.Book;
-import com.uol.msse.data.BookItem;
 import com.uol.msse.data.UserInfo;
-import com.uol.msse.entity.Format;
+import com.uol.msse.exception.ManageUserException;
+import com.uol.msse.page.AddUserPage;
+import com.uol.msse.page.MainPage;
+import com.uol.msse.page.UpdateUserPage;
+import com.uol.msse.page.ViewUserPage;
 
-import java.util.List;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.util.*;
 
-public class Librarian implements Manage, Search {
+/**
+ * Main class of execution
+ */
+public class Librarian implements Manage {
 
     @Override
-    public void addUser(UserInfo userInfo) {
-
+    public void addUser(JMenuItem addUser, java.util.List<Map<String, UserInfo>> userInfos) throws ManageUserException {
+        addUser.addActionListener((ActionEvent event) -> {
+            new AddUserPage(userInfos);
+        });
     }
 
     @Override
-    public void updateUser(UserInfo userInfo) {
-
+    public void viewUser(JMenuItem viewUser, java.util.List<Map<String, UserInfo>> userInfos) throws ManageUserException {
+        viewUser.addActionListener((ActionEvent event) -> {
+            new ViewUserPage(userInfos);
+        });
     }
 
     @Override
-    public void deleteUser() {
-
+    public void updateUser(JMenuItem updateUser, java.util.List<Map<String, UserInfo>> userInfos) throws ManageUserException{
+        updateUser.addActionListener((ActionEvent event) ->  {
+            new UpdateUserPage(userInfos);
+        });
     }
 
-    @Override
-    public List<UserInfo> getAllUsers() {
-        return null;
-    }
-
-    @Override
-    public UserInfo getUserByFirstName() {
-        return null;
-    }
-
-    @Override
-    public UserInfo getUserByLastName() {
-        return null;
-    }
-
-    @Override
-    public void addBook(Book book) {
-
-    }
-
-    @Override
-    public void addBookItem(BookItem bookItem) {
-
-    }
-
-    @Override
-    public void updateBook(Book book) {
-
-    }
-
-    @Override
-    public void updateBookItem(BookItem bookItem) {
-
-    }
-
-    @Override
-    public List<BookItem> getAllByTitle(String title) {
-        return null;
-    }
-
-    @Override
-    public List<BookItem> getAllByFormat(Format format) {
-        return null;
-    }
-
-    @Override
-    public List<BookItem> getByUserName(String firstName, String lastName) {
-        return null;
-    }
 }

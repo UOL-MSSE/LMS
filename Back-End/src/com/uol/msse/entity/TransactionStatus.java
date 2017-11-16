@@ -1,6 +1,9 @@
 package com.uol.msse.entity;
 
 
+/**
+ * Entity representing transaction status
+ */
 public enum TransactionStatus {
     APPROVED,
     PENDING,

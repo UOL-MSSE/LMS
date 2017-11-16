@@ -3,6 +3,9 @@ package com.uol.msse.data;
 
 import java.util.Date;
 
+/**
+ * Data object to hold information related to Book
+ */
 public class Book {
 
     private String ISBN;

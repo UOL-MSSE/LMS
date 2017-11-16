@@ -1,6 +1,9 @@
 package com.uol.msse.entity;
 
 
+/**
+ * Entity representing language
+ */
 public enum Language {
     USA("en_US"),
     UK("en_GB"),

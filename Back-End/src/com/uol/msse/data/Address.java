@@ -1,12 +1,18 @@
 package com.uol.msse.data;
 
+/**
+ * Data object class for holding user address
+ */
 public class Address {
+
     private String addressLine1;
     private String addressLine2;
     private String city;
     private String stateOrCounty;
     private String postalCode;
     private String country;
+
+    // setters and getters
 
     public String getAddressLine1() {
         return addressLine1;
